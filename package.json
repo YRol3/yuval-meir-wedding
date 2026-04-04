@@ -5,7 +5,7 @@
   "scripts": {
     "start": "ng serve",
     "build": "ng build",
-    "build:pages": "ng build --configuration github-pages",
+    "build:pages": "ng build --configuration github-pages && powershell -NoProfile -ExecutionPolicy Bypass -File scripts/prepare-pages.ps1",
     "watch": "ng build --watch --configuration development"
   },
   "dependencies": {
