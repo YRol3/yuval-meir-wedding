@@ -1,0 +1,153 @@
+.countdown-section {
+  width: 100%;
+  height: 100%;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.12)),
+    url('../../../../assets/count-down.png') center center / cover no-repeat;
+}
+
+.countdown-overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 1.25rem;
+  box-sizing: border-box;
+  background: linear-gradient(
+    180deg,
+    rgba(13, 13, 13, 0.28) 0%,
+    rgba(13, 13, 13, 0.1) 30%,
+    rgba(13, 13, 13, 0.42) 100%
+  );
+}
+
+.countdown-content {
+  width: min(100%, 35rem);
+}
+
+.countdown-header {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.countdown-intro {
+  margin: 0;
+  font-size: clamp(1.45rem, 5.6vw, 2.55rem);
+  line-height: 1.22;
+  font-weight: 700;
+  background:
+    linear-gradient(rgba(255, 248, 240, 0.86), rgba(216, 198, 173, 0.88)),
+    url('../../../../assets/count-down.png') center center / cover no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  mix-blend-mode: screen;
+  filter: contrast(1.08) saturate(1.08);
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.1),
+    0 10px 24px rgba(0, 0, 0, 0.16);
+}
+
+.countdown-heading {
+  margin: 0.85rem 0 0;
+  font-size: clamp(1.4rem, 6vw, 2.2rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  background:
+    linear-gradient(rgba(255, 250, 244, 0.92), rgba(220, 203, 180, 0.9)),
+    url('../../../../assets/count-down.png') center center / cover no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  mix-blend-mode: screen;
+  filter: contrast(1.1) saturate(1.06);
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.14),
+    0 10px 24px rgba(0, 0, 0, 0.14);
+}
+
+:host-context(html[lang='he']) .countdown-header {
+  font-family: 'LiaSgulaBold3', Georgia, "Times New Roman", serif;
+}
+
+:host-context(html[lang='he']) .countdown-intro {
+  line-height: 1.16;
+}
+
+:host-context(html[lang='he']) .countdown-heading {
+  letter-spacing: 0.03em;
+}
+
+.countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+  width: 100%;
+}
+
+.countdown-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 10.5rem;
+  padding: 1rem;
+  box-sizing: border-box;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(10px);
+  color: #ffffff;
+  text-align: center;
+}
+
+:host-context(html[lang='he']) .countdown-card {
+  font-family: 'LiaSgulaBold3', Georgia, "Times New Roman", serif;
+}
+
+.countdown-value {
+  font-size: clamp(2.5rem, 11vw, 4.4rem);
+  line-height: 1;
+  font-weight: 500;
+}
+
+.countdown-label {
+  margin-top: 0.85rem;
+  font-size: 0.92rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+:host-context(html[lang='he']) .countdown-label {
+  letter-spacing: 0.05em;
+  text-transform: none;
+}
+
+@media (min-width: 768px) {
+  .countdown-overlay {
+    padding: 2rem;
+  }
+
+  .countdown-header {
+    margin-bottom: 1.9rem;
+  }
+
+  .countdown-intro {
+    max-width: 30rem;
+    margin-inline: auto;
+  }
+
+  .countdown-heading {
+    margin-top: 1rem;
+  }
+
+  .countdown-grid {
+    gap: 1.2rem;
+  }
+
+  .countdown-card {
+    min-height: 13rem;
+    padding: 1.4rem;
+  }
+}

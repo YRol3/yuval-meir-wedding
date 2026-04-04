@@ -1,0 +1,32 @@
+<section class="countdown-section">
+  <div class="countdown-overlay">
+    <div class="countdown-content">
+      <header class="countdown-header">
+        <p class="countdown-intro">{{ 'envelop.countdown.invitation' | translate }}</p>
+        <h2 class="countdown-heading">{{ 'envelop.countdown.until' | translate }}</h2>
+      </header>
+
+      <div class="countdown-grid">
+      <article class="countdown-card">
+        <span class="countdown-value">{{ countdown.days }}</span>
+        <span class="countdown-label">{{ 'envelop.countdown.days' | translate }}</span>
+      </article>
+
+      <article class="countdown-card">
+        <span class="countdown-value">{{ countdown.hours }}</span>
+        <span class="countdown-label">{{ 'envelop.countdown.hours' | translate }}</span>
+      </article>
+
+      <article class="countdown-card">
+        <span class="countdown-value">{{ countdown.minutes }}</span>
+        <span class="countdown-label">{{ 'envelop.countdown.minutes' | translate }}</span>
+      </article>
+
+      <article class="countdown-card">
+        <span class="countdown-value">{{ countdown.seconds }}</span>
+        <span class="countdown-label">{{ 'envelop.countdown.seconds' | translate }}</span>
+      </article>
+      </div>
+    </div>
+  </div>
+</section>

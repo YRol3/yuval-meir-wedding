@@ -1,0 +1,40 @@
+<main class="loading-screen">
+  <video
+    #videoPlayer
+    class="background-video"
+    [class.background-video--active]="started"
+    playsinline
+    muted
+    preload="auto"
+  >
+    @if (videoSource) {
+      <source [src]="videoSource" type="video/mp4" />
+    }
+  </video>
+
+  <button
+    type="button"
+    class="overlay-button"
+    [class.overlay-button--hidden]="started"
+    [disabled]="!imageLoaded || !isReady || started"
+    (click)="startExperience()"
+    [attr.aria-label]="'loadingScreen.openEnvelope' | translate"
+  >
+    <img
+      class="envelope-image"
+      src="assets/envelop.jpg"
+      alt=""
+      draggable="false"
+      decoding="async"
+      fetchpriority="high"
+      loading="eager"
+      (load)="handleImageLoad()"
+    />
+
+    @if (isReady) {
+      <span class="status-pill">{{ 'loadingScreen.tapToOpen' | translate }}</span>
+    }
+  </button>
+
+  <div class="white-fade" [class.white-fade--active]="isFadingOut" aria-hidden="true"></div>
+</main>

@@ -1,0 +1,43 @@
+<section class="envelop">
+  <audio #musicPlayer preload="auto">
+    <source src="assets/music.mp3" type="audio/mpeg" />
+  </audio>
+
+  @if (activeVideo) {
+    <div class="language-toggle" [attr.aria-label]="'envelop.languageToggle' | translate">
+      <button
+        type="button"
+        class="language-toggle__option"
+        [class.language-toggle__option--active]="currentLanguage === 'en'"
+        (click)="switchLanguage('en')"
+        [attr.aria-pressed]="currentLanguage === 'en'"
+        [attr.aria-label]="'envelop.switchToEnglish' | translate"
+      >
+        English
+      </button>
+
+      <button
+        type="button"
+        class="language-toggle__option"
+        [class.language-toggle__option--active]="currentLanguage === 'he'"
+        (click)="switchLanguage('he')"
+        [attr.aria-pressed]="currentLanguage === 'he'"
+        [attr.aria-label]="'envelop.switchToHebrew' | translate"
+      >
+        עברית
+      </button>
+    </div>
+  }
+
+  <div class="envelop-scroll">
+    <app-hero-section
+      class="screen-section"
+      [active]="activeVideo"
+      (scrollNext)="scrollToCountdown()"
+    ></app-hero-section>
+
+    <section #countdownSection class="screen-section">
+      <app-countdown-section></app-countdown-section>
+    </section>
+  </div>
+</section>

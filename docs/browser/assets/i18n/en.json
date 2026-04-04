@@ -1,0 +1,25 @@
+{
+  "loadingScreen": {
+    "tapToOpen": "Tap to open",
+    "openEnvelope": "Open envelope"
+  },
+  "envelop": {
+    "languageToggle": "Language switch",
+    "switchToEnglish": "Switch to English",
+    "switchToHebrew": "Switch to Hebrew",
+    "hero": {
+      "couple": "Yuval & Meir",
+      "title": "Getting Married",
+      "details": "September 15 2026 19:30",
+      "scrollToCountdown": "Scroll to countdown"
+    },
+    "countdown": {
+      "invitation": "We are excited to invite you to our wedding on September 15, 2026",
+      "until": "In:",
+      "days": "Days",
+      "hours": "Hours",
+      "minutes": "Minutes",
+      "seconds": "Seconds"
+    }
+  }
+}

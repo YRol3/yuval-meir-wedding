@@ -1,0 +1,30 @@
+<section class="hero-section">
+  <video
+    #heroVideo
+    class="hero-video"
+    playsinline
+    loop
+    muted
+    preload="auto"
+  >
+    <source src="assets/hero.mp4" type="video/mp4" />
+  </video>
+  @if(active){
+    <div class="hero-overlay">
+      <div class="hero-copy">
+        <p class="eyebrow">{{ 'envelop.hero.couple' | translate }}</p>
+        <h1 class="title">{{ 'envelop.hero.title' | translate }}</h1>
+        <p class="details">{{ 'envelop.hero.details' | translate }}</p>
+      </div>
+  
+      <button
+        type="button"
+        class="scroll-arrow"
+        (click)="requestScrollNext()"
+        [attr.aria-label]="'envelop.hero.scrollToCountdown' | translate"
+      >
+        <span class="scroll-arrow__icon"></span>
+      </button>
+    </div>
+  }
+</section>

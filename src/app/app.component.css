@@ -1,0 +1,23 @@
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.app-shell {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.loading-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  transition: opacity 1000ms 1800ms ease;
+}
+
+.fadeOut{
+  opacity: 0;
+}

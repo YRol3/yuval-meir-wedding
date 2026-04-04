@@ -1,0 +1,123 @@
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.hero-overlay {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  padding: max(2rem, env(safe-area-inset-top, 0px) + 1.5rem) 1.5rem
+    calc(env(safe-area-inset-bottom, 0px) + 1.5rem);
+  box-sizing: border-box;
+  background: linear-gradient(
+    180deg,
+    rgba(15, 15, 15, 0.18) 0%,
+    rgba(15, 15, 15, 0.08) 35%,
+    rgba(15, 15, 15, 0.28) 100%
+  );
+}
+
+.hero-copy {
+  margin-top: auto;
+  margin-bottom: auto;
+  color: #ffffff;
+  text-align: center;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.35);
+}
+
+:host-context(html[lang='he']) .hero-copy {
+  font-family: 'LiaSgulaBold3', Georgia, "Times New Roman", serif;
+}
+
+.eyebrow {
+  margin: 0 0 0.85rem;
+  font-size: 1rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+:host-context(html[lang='he']) .eyebrow {
+  letter-spacing: 0.08em;
+  text-transform: none;
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(2.8rem, 14vw, 5.8rem);
+  line-height: 0.95;
+  font-weight: 500;
+}
+
+.details {
+  margin: 1.1rem 0 0;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+}
+
+:host-context(html[lang='he']) .details {
+  letter-spacing: 0.03em;
+}
+
+.scroll-arrow {
+  align-self: center;
+  display: grid;
+  place-items: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.scroll-arrow__icon {
+  width: 1rem;
+  height: 1rem;
+  border-right: 2px solid rgba(240, 240, 240, 0.8);
+  border-bottom: 2px solid rgba(240, 240, 240, 0.8);
+  transform: rotate(45deg);
+  animation: arrow-breathe 2.2s ease-in-out infinite alternate;
+}
+
+@keyframes arrow-breathe {
+  from {
+    opacity: 1;
+    transform: rotate(45deg) translateY(0);
+  }
+
+  to {
+    opacity: 0.5;
+    transform: rotate(45deg) translateY(0.35rem);
+  }
+}
+
+@media (min-width: 768px) {
+  .hero-overlay {
+    padding: 3rem 3rem 2rem;
+  }
+
+  .eyebrow {
+    font-size: 1.1rem;
+  }
+
+  .details {
+    font-size: 1.05rem;
+  }
+}
