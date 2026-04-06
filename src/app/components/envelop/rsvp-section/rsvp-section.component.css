@@ -1,0 +1,179 @@
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.rsvp-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: max(5.25rem, env(safe-area-inset-top, 0px) + 4.25rem) 1.25rem
+    max(4.75rem, env(safe-area-inset-bottom, 0px) + 3.75rem);
+  box-sizing: border-box;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.12)),
+    url('../../../../assets/count-down.png') center center / cover no-repeat;
+  position: relative;
+}
+
+.rsvp-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(13, 13, 13, 0.3) 0%,
+    rgba(13, 13, 13, 0.14) 34%,
+    rgba(13, 13, 13, 0.45) 100%
+  );
+}
+
+.rsvp-section > * {
+  position: relative;
+  z-index: 1;
+}
+
+.rsvp-card {
+  width: min(100%, 30.5rem);
+  padding: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 2rem;
+  background: linear-gradient(180deg, rgba(248, 250, 247, 0.14) 0%, rgba(226, 234, 229, 0.1) 100%);
+  box-shadow:
+    0 24px 64px rgba(26, 39, 33, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(18px);
+}
+
+.rsvp-eyebrow {
+  margin: 0;
+  color: rgba(231, 239, 234, 0.78);
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+:host-context(html[lang='he']) .rsvp-eyebrow {
+  letter-spacing: 0.08em;
+  text-transform: none;
+}
+
+.rsvp-title {
+  margin: 0.45rem 0 1rem;
+  color: #f5f8f6;
+  font-size: clamp(1.75rem, 6vw, 2.3rem);
+  line-height: 1.05;
+  text-align: center;
+}
+
+.rsvp-field {
+  display: block;
+  margin-top: 0.85rem;
+}
+
+.rsvp-field__label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: rgba(232, 240, 235, 0.82);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.rsvp-options {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.6rem;
+}
+
+.rsvp-option {
+  min-height: 3.1rem;
+  padding: 0.62rem 0.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 1.15rem;
+  background: rgba(242, 247, 244, 0.1);
+  color: #eef4f1;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: transform 220ms ease, background-color 220ms ease, color 220ms ease, box-shadow 220ms ease;
+}
+
+.rsvp-option--active {
+  background: linear-gradient(180deg, #f3f7f4 0%, #dbe7e1 100%);
+  color: #405448;
+  box-shadow: 0 12px 24px rgba(19, 30, 25, 0.2);
+}
+
+.rsvp-input,
+.rsvp-textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 1.15rem;
+  background: rgba(244, 248, 245, 0.9);
+  color: #314238;
+  font: inherit;
+}
+
+.rsvp-input {
+  height: 3.1rem;
+  padding: 0 0.9rem;
+}
+
+.rsvp-textarea {
+  min-height: 7.25rem;
+  padding: 0.85rem 0.9rem;
+  resize: vertical;
+}
+
+.rsvp-input:focus,
+.rsvp-textarea:focus,
+.rsvp-option:focus {
+  outline: 2px solid rgba(222, 234, 227, 0.5);
+  outline-offset: 2px;
+}
+
+.rsvp-submit {
+  width: 100%;
+  margin-top: 0.95rem;
+  min-height: 3.2rem;
+  border: 0;
+  border-radius: 1.2rem;
+  background: linear-gradient(180deg, #edf4f0 0%, #d7e5dd 100%);
+  color: #405448;
+  font: inherit;
+  font-size: 0.92rem;
+  cursor: pointer;
+  box-shadow: 0 16px 26px rgba(19, 30, 25, 0.24);
+  transition: transform 220ms ease, box-shadow 220ms ease, opacity 220ms ease;
+}
+
+.rsvp-submit:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 20px 30px rgba(19, 30, 25, 0.28);
+}
+
+.rsvp-submit:focus {
+  outline: 2px solid rgba(222, 234, 227, 0.5);
+  outline-offset: 2px;
+}
+
+@media (max-width: 520px) {
+  .rsvp-options {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 768px) {
+  .rsvp-section {
+    padding: 5.5rem 1.75rem 5rem;
+  }
+
+  .rsvp-card {
+    width: min(100%, 32rem);
+    padding: 1.15rem;
+  }
+}

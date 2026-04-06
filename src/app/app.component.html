@@ -1,12 +1,16 @@
-<div class="app-shell">
-  <app-envelop [activeVideo]="!showLoadingScreen" [active]="experienceStarted"></app-envelop>
+@if (currentView === 'thanks') {
+  <app-thank-you-page></app-thank-you-page>
+} @else {
+  <div class="app-shell">
+    <app-envelop [activeVideo]="!showLoadingScreen" [active]="experienceStarted"></app-envelop>
 
-  @if (showLoadingScreen) {
-    <app-loading-screen
-      [class.fadeOut]="experienceStarted"
-      class="loading-layer"
-      (experienceStarted)="handleLoadingStarted()"
-      (experienceCompleted)="handleLoadingCompleted()"
-    ></app-loading-screen>
-  }
-</div>
+    @if (showLoadingScreen) {
+      <app-loading-screen
+        [class.fadeOut]="experienceStarted"
+        class="loading-layer"
+        (experienceStarted)="handleLoadingStarted()"
+        (experienceCompleted)="handleLoadingCompleted()"
+      ></app-loading-screen>
+    }
+  </div>
+}

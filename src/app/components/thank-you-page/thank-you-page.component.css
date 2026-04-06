@@ -1,0 +1,51 @@
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.thank-you-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100dvh;
+  min-height: 100svh;
+  padding: 2rem 1.25rem;
+  box-sizing: border-box;
+  background:
+    radial-gradient(circle at top, rgba(255, 247, 229, 0.95), transparent 34%),
+    linear-gradient(180deg, #f7f0e4 0%, #e7d8c3 100%);
+}
+
+.thank-you-card {
+  width: min(100%, 34rem);
+  padding: 2rem 1.5rem;
+  border: 1px solid rgba(103, 78, 46, 0.12);
+  border-radius: 2rem;
+  background: linear-gradient(180deg, rgba(255, 252, 247, 0.95) 0%, rgba(247, 239, 228, 0.92) 100%);
+  box-shadow:
+    0 24px 70px rgba(82, 61, 30, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.55);
+  text-align: center;
+}
+
+.thank-you-eyebrow {
+  margin: 0;
+  color: #8b7355;
+  font-size: 0.82rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+:host-context(html[lang='he']) .thank-you-eyebrow {
+  letter-spacing: 0.08em;
+  text-transform: none;
+}
+
+.thank-you-title {
+  margin: 0.65rem 0 0;
+  color: #3f3527;
+  font-size: clamp(2.2rem, 8vw, 3.2rem);
+  line-height: 1.05;
+}

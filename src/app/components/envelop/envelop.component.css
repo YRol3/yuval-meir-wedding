@@ -7,6 +7,7 @@
 }
 
 .language-toggle {
+  opacity: 0;
   font-family: Georgia, "Times New Roman", serif;
   position: absolute;
   top: calc(env(safe-area-inset-top, 0px) + 1rem);
@@ -23,8 +24,43 @@
   background: rgba(12, 12, 12, 0.26);
   backdrop-filter: blur(14px);
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+  transition: opacity 1800ms ease;
 }
 
+.sound-toggle {
+  opacity: 0;
+  position: absolute;
+  right: 1rem;
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 1rem);
+  z-index: 5;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0);
+  border-radius: 999px;
+  background: rgba(12, 12, 12, 0.26);
+  color: #ffffff;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+  cursor: pointer;
+  transition: opacity 1800ms ease, background-color 220ms ease, color 220ms ease;
+}
+
+.sound-toggle:hover {
+  background: rgba(12, 12, 12, 0.38);
+}
+
+.sound-toggle__icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.active{
+  opacity: 1;
+}
 .language-toggle__option {
   min-width: 3rem;
   padding: 0.52rem 0.78rem;
@@ -71,6 +107,11 @@
   .language-toggle {
     top: 1.35rem;
     right: 1.35rem;
+  }
+
+  .sound-toggle {
+    right: 1.35rem;
+    bottom: 1.35rem;
   }
 
   .screen-section {

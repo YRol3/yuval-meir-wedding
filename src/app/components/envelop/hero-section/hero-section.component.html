@@ -1,17 +1,30 @@
 <section class="hero-section">
   <video
-    #heroVideo
+    #heroForwardVideo
     class="hero-video"
+    [class.hero-video--active]="showingForwardVideo"
     playsinline
-    loop
     muted
     preload="auto"
+    (ended)="handleVideoEnded('forward')"
   >
     <source src="assets/hero.mp4" type="video/mp4" />
   </video>
-  @if(active){
-    <div class="hero-overlay">
-      <div class="hero-copy">
+
+  <video
+    #heroBackVideo
+    class="hero-video"
+    [class.hero-video--active]="!showingForwardVideo"
+    playsinline
+    muted
+    preload="auto"
+    (ended)="handleVideoEnded('back')"
+  >
+    <source src="assets/hero-back.mp4" type="video/mp4" />
+  </video>
+  
+    <div [class.active]="active" class="hero-overlay">
+      <div class="hero-copy" appRevealOnScroll revealFrom="left" [revealDelay]="120">
         <p class="eyebrow">{{ 'envelop.hero.couple' | translate }}</p>
         <h1 class="title">{{ 'envelop.hero.title' | translate }}</h1>
         <p class="details">{{ 'envelop.hero.details' | translate }}</p>
@@ -20,11 +33,13 @@
       <button
         type="button"
         class="scroll-arrow"
+        appRevealOnScroll
+        revealFrom="right"
+        [revealDelay]="220"
         (click)="requestScrollNext()"
         [attr.aria-label]="'envelop.hero.scrollToCountdown' | translate"
       >
         <span class="scroll-arrow__icon"></span>
       </button>
     </div>
-  }
 </section>

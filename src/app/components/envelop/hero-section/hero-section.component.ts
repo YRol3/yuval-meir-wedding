@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnChanges, Output, SimpleChanges, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnChanges, OnDestroy, Output, SimpleChanges, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-hero-section',
@@ -6,30 +6,51 @@ import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnChanges, O
   templateUrl: './hero-section.component.html',
   styleUrl: './hero-section.component.css'
 })
-export class HeroSectionComponent implements AfterViewInit, OnChanges {
+export class HeroSectionComponent implements AfterViewInit, OnChanges, OnDestroy {
   @Input({ required: true }) active = false;
+  @Input({ required: true }) activeVideo = false;
   @Output() readonly scrollNext = new EventEmitter<void>();
 
-  @ViewChild('heroVideo', { static: true })
-  private heroVideoRef!: ElementRef<HTMLVideoElement>;
+  @ViewChild('heroForwardVideo', { static: true })
+  private heroForwardVideoRef!: ElementRef<HTMLVideoElement>;
+
+  @ViewChild('heroBackVideo', { static: true })
+  private heroBackVideoRef!: ElementRef<HTMLVideoElement>;
 
   started = false;
+  showingForwardVideo = true;
   private readonly playbackSpeed = 0.5;
 
   ngAfterViewInit(): void {
-    if (this.active) {
+    this.applyPlaybackSpeed();
+
+    if (this.activeVideo) {
       this.startVideo();
     }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['active']?.currentValue) {
+    if (changes['activeVideo']?.currentValue) {
       this.startVideo();
     }
   }
 
+  ngOnDestroy(): void {
+    this.heroForwardVideoRef.nativeElement.pause();
+    this.heroBackVideoRef.nativeElement.pause();
+  }
+
   requestScrollNext(): void {
     this.scrollNext.emit();
+  }
+
+  handleVideoEnded(video: 'forward' | 'back'): void {
+    if (video === 'forward') {
+      this.playVideo('back');
+      return;
+    }
+
+    this.playVideo('forward');
   }
 
   private startVideo(): void {
@@ -38,9 +59,27 @@ export class HeroSectionComponent implements AfterViewInit, OnChanges {
     }
 
     this.started = true;
+    this.playVideo('forward');
+  }
 
-    const heroVideo = this.heroVideoRef.nativeElement;
-    heroVideo.playbackRate = this.playbackSpeed;
-    void heroVideo.play();
+  private applyPlaybackSpeed(): void {
+    this.heroForwardVideoRef.nativeElement.playbackRate = this.playbackSpeed;
+    this.heroBackVideoRef.nativeElement.playbackRate = this.playbackSpeed;
+  }
+
+  private playVideo(video: 'forward' | 'back'): void {
+    const nextVideo =
+      video === 'forward'
+        ? this.heroForwardVideoRef.nativeElement
+        : this.heroBackVideoRef.nativeElement;
+    const previousVideo =
+      video === 'forward'
+        ? this.heroBackVideoRef.nativeElement
+        : this.heroForwardVideoRef.nativeElement;
+
+    previousVideo.pause();
+    nextVideo.currentTime = 0;
+    this.showingForwardVideo = video === 'forward';
+    void nextVideo.play();
   }
 }

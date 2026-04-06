@@ -10,12 +10,18 @@
   position: absolute;
   inset: 0;
   width: 100%;
-  height: 100%;
+  height: 105%;
   object-fit: cover;
   object-position: center center;
+  opacity: 0;
+}
+
+.hero-video--active {
+  opacity: 1;
 }
 
 .hero-overlay {
+  opacity: 0;
   position: relative;
   z-index: 1;
   display: flex;
@@ -32,8 +38,11 @@
     rgba(15, 15, 15, 0.08) 35%,
     rgba(15, 15, 15, 0.28) 100%
   );
+  transition: opacity 1800ms ease;
 }
-
+.active{
+  opacity: 1;
+}
 .hero-copy {
   margin-top: auto;
   margin-bottom: auto;

@@ -3,8 +3,8 @@
     <source src="assets/music.mp3" type="audio/mpeg" />
   </audio>
 
-  @if (activeVideo) {
-    <div class="language-toggle" [attr.aria-label]="'envelop.languageToggle' | translate">
+
+    <div [class.active]="active" class="language-toggle" [attr.aria-label]="'envelop.languageToggle' | translate">
       <button
         type="button"
         class="language-toggle__option"
@@ -27,17 +27,55 @@
         עברית
       </button>
     </div>
-  }
+  
+
+    <button
+      type="button"
+      class="sound-toggle"
+      [class.active]="active"
+      (click)="toggleSound()"
+      [attr.aria-pressed]="soundEnabled"
+      [attr.aria-label]="soundEnabled ? 'Mute music' : 'Unmute music'"
+    >
+      @if (soundEnabled) {
+        <svg viewBox="0 0 24 24" aria-hidden="true" class="sound-toggle__icon">
+          <path
+            d="M5 9v6h4l5 4V5L9 9H5zm11.5 3a4.5 4.5 0 0 0-2.5-4.03v8.06A4.5 4.5 0 0 0 16.5 12zm0-7.5v2.05A7.5 7.5 0 0 1 19 12a7.5 7.5 0 0 1-2.5 5.45v2.05A9.98 9.98 0 0 0 21 12a9.98 9.98 0 0 0-4.5-7.5z"
+            fill="currentColor"
+          />
+        </svg>
+      } @else {
+        <svg viewBox="0 0 24 24" aria-hidden="true" class="sound-toggle__icon">
+          <path
+            d="M5 9v6h4l5 4V5L9 9H5z"
+            fill="currentColor"
+          />
+          <path
+            d="M16.59 12l2.7-2.7-1.41-1.41-2.7 2.7-2.7-2.7-1.41 1.41 2.7 2.7-2.7 2.7 1.41 1.41 2.7-2.7 2.7 2.7 1.41-1.41-2.7-2.7z"
+            fill="currentColor"
+          />
+        </svg>
+      }
+    </button>
 
   <div class="envelop-scroll">
     <app-hero-section
       class="screen-section"
-      [active]="activeVideo"
-      (scrollNext)="scrollToCountdown()"
+      [active]="active"
+      [activeVideo]="activeVideo"
+      (scrollNext)="scrollDown()"
     ></app-hero-section>
 
-    <section #countdownSection class="screen-section">
+    <section class="screen-section">
       <app-countdown-section></app-countdown-section>
+    </section>
+
+    <section class="screen-section">
+      <app-directions-section></app-directions-section>
+    </section>
+
+    <section #scrolldown class="screen-section">
+      <app-rsvp-section></app-rsvp-section>
     </section>
   </div>
 </section>

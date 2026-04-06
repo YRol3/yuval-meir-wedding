@@ -1,0 +1,49 @@
+<div class="rsvp-section">
+  <div class="rsvp-card" appRevealOnScroll revealFrom="left" [revealDelay]="100">
+    <p class="rsvp-eyebrow">{{ 'envelop.rsvp.eyebrow' | translate }}</p>
+    <h2 class="rsvp-title">{{ 'envelop.rsvp.title' | translate }}</h2>
+
+    <div class="rsvp-field" appRevealOnScroll revealFrom="right" [revealDelay]="200">
+      <p class="rsvp-field__label">{{ 'envelop.rsvp.attendanceLabel' | translate }}</p>
+      <div class="rsvp-options">
+        @for (option of attendanceOptions; track option) {
+          <button
+            type="button"
+            class="rsvp-option"
+            [class.rsvp-option--active]="attendance === option"
+            (click)="attendance = option"
+            [attr.aria-pressed]="attendance === option"
+          >
+            {{ ('envelop.rsvp.attendanceOptions.' + option) | translate }}
+          </button>
+        }
+      </div>
+    </div>
+
+    <label class="rsvp-field" for="guestsCount"  appRevealOnScroll revealFrom="left" [revealDelay]="300">
+      <span class="rsvp-field__label">{{ 'envelop.rsvp.guestsLabel' | translate }}</span>
+      <input
+        id="guestsCount"
+        class="rsvp-input"
+        type="number"
+        min="1"
+        inputmode="numeric"
+        [(ngModel)]="guestsCount"
+      />
+    </label>
+
+    <label class="rsvp-field" for="blessingNote"  appRevealOnScroll revealFrom="right" [revealDelay]="400">
+      <span class="rsvp-field__label">{{ 'envelop.rsvp.noteLabel' | translate }}</span>
+      <textarea
+        id="blessingNote"
+        class="rsvp-textarea"
+        rows="5"
+        [(ngModel)]="blessingNote"
+      ></textarea>
+    </label>
+
+    <button type="button" class="rsvp-submit" (click)="submit()"  appRevealOnScroll revealFrom="left" [revealDelay]="600">
+      {{ 'envelop.rsvp.submit' | translate }}
+    </button>
+  </div>
+</div>

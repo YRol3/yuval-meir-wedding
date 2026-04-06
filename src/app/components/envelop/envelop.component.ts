@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ElementRef, Input, OnChanges, OnDestroy, SimpleChanges, ViewChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-envelop',
@@ -14,10 +15,11 @@ export class EnvelopComponent implements AfterViewInit, OnChanges, OnDestroy {
   @ViewChild('musicPlayer', { static: true })
   private musicRef!: ElementRef<HTMLAudioElement>;
 
-  @ViewChild('countdownSection')
-  private countdownSectionRef?: ElementRef<HTMLElement>;
+  @ViewChild('scrolldown')
+  private scrolldownRef?: ElementRef<HTMLElement>;
 
   startedSound = false;
+  soundEnabled = true;
 
   constructor(private readonly translate: TranslateService) {}
 
@@ -37,19 +39,24 @@ export class EnvelopComponent implements AfterViewInit, OnChanges, OnDestroy {
     this.musicRef.nativeElement.pause();
   }
 
-  scrollToCountdown(): void {
-    this.countdownSectionRef?.nativeElement.scrollIntoView({
+  scrollDown(): void {
+    this.scrolldownRef?.nativeElement.scrollIntoView({
       behavior: 'smooth',
       block: 'start'
     });
   }
 
-  switchLanguage(lang: 'en' | 'he'): void {
+  async switchLanguage(lang: 'en' | 'he'): Promise<void> {
     if (this.currentLanguage === lang) {
       return;
     }
 
-    void this.translate.use(lang);
+    await firstValueFrom(this.translate.use(lang));
+  }
+
+  toggleSound(): void {
+    this.soundEnabled = !this.soundEnabled;
+    this.musicRef.nativeElement.muted = !this.soundEnabled;
   }
 
   get currentLanguage(): 'en' | 'he' {
@@ -62,6 +69,7 @@ export class EnvelopComponent implements AfterViewInit, OnChanges, OnDestroy {
     }
 
     this.startedSound = true;
+    this.musicRef.nativeElement.muted = !this.soundEnabled;
     void this.musicRef.nativeElement.play();
   }
 }

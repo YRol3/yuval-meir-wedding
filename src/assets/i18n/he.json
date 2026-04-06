@@ -1,7 +1,8 @@
 {
   "loadingScreen": {
     "tapToOpen": "הקשו לפתיחה",
-    "openEnvelope": "פתחו את המעטפה"
+    "openEnvelope": "פתחו את המעטפה",
+    "recipientPrefix": "לכבוד"
   },
   "envelop": {
     "languageToggle": "החלפת שפה",
@@ -20,6 +21,37 @@
       "hours": "שעות",
       "minutes": "דקות",
       "seconds": "שניות"
+    },
+    "directions": {
+      "eyebrow": "מחכים לכם בשמחה",
+      "title": "איך מגיעים?",
+      "subtitle": "שמנו כאן את כל מה שצריך כדי להגיע בקלות ובזמן.",
+      "mapTitle": "מפת דרכי הגעה",
+      "navigationLabel": "לניווט מהיר",
+      "wazeLabel": "וויז",
+      "googleMapsLabel": "גוגל מפות",
+      "wazeAriaLabel": "ניווט באמצעות וויז",
+      "googleMapsAriaLabel": "ניווט באמצעות גוגל מפות",
+      "addressTitle": "כתובת האירוע",
+      "destinationLabel": "דוריה מתחם הגן, כביש 35, שדה יואב, 7935100",
+      "destinationQuery": "דוריה מתחם הגן, כביש 35, שדה יואב, 7935100"
+    },
+    "rsvp": {
+      "eyebrow": "נשמח לשמוע מכם",
+      "title": "אישור הגעה",
+      "attendanceLabel": "האם הינכם מגיעים?",
+      "guestsLabel": "כמה תהיו:",
+      "noteLabel": "ברכה לזוג:",
+      "submit": "שליחת אישור הגעה",
+      "attendanceOptions": {
+        "approved": "מגיע\\ה",
+        "rejected": "לא מגיע\\ה",
+        "maybe": "אולי"
+      }
     }
+  },
+  "thankYou": {
+    "eyebrow": "קיבלנו את התשובה שלכם",
+    "title": "תודה על אישור ההגעה"
   }
 }

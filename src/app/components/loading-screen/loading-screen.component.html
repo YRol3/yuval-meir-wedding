@@ -31,6 +31,13 @@
       (load)="handleImageLoad()"
     />
 
+    @if (inviteName) {
+      <div class="recipient-engraving" aria-hidden="true">
+        <span class="recipient-engraving__label">{{ 'loadingScreen.recipientPrefix' | translate }}</span>
+        <span class="recipient-engraving__name">{{ inviteName }}</span>
+      </div>
+    }
+
     @if (isReady) {
       <span class="status-pill">{{ 'loadingScreen.tapToOpen' | translate }}</span>
     }

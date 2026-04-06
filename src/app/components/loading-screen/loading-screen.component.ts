@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
+import { InviteContextService } from '../../invite-context.service';
 
 @Component({
   selector: 'app-loading-screen',
@@ -18,6 +19,12 @@ export class LoadingScreenComponent implements AfterViewInit {
   imageLoaded = false;
   isReady = false;
   videoSource: string | null = null;
+
+  constructor(private readonly inviteContext: InviteContextService) {}
+
+  get inviteName(): string | null {
+    return this.inviteContext.data?.name?.trim() || null;
+  }
 
   ngAfterViewInit(): void {
     if (this.imageLoaded) {

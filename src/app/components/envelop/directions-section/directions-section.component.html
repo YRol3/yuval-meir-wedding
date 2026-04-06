@@ -1,0 +1,46 @@
+<div class="directions-section">
+  <div class="directions-card" appRevealOnScroll revealFrom="right" [revealDelay]="100">
+    <p class="directions-eyebrow">{{ 'envelop.directions.eyebrow' | translate }}</p>
+    <h2 class="directions-title">{{ 'envelop.directions.title' | translate }}</h2>
+    <p class="directions-subtitle">{{ 'envelop.directions.subtitle' | translate }}</p>
+
+    <iframe  appRevealOnScroll revealFrom="left" [revealDelay]="200"
+      class="directions-map"
+      [title]="'envelop.directions.mapTitle' | translate"
+      [src]="directionsMapUrl"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+    ></iframe>
+
+    <p class="directions-label">{{ 'envelop.directions.navigationLabel' | translate }}</p>
+
+    <div class="directions-actions" appRevealOnScroll revealFrom="right" [revealDelay]="300">
+      <a
+        class="directions-action directions-action--waze"
+        [href]="wazeUrl"
+        target="_blank"
+        rel="noreferrer"
+        [attr.aria-label]="'envelop.directions.wazeAriaLabel' | translate"
+      >
+        <img class="directions-action__icon" src="assets/waze-icon.svg" alt="" />
+        <span class="directions-action__label">{{ 'envelop.directions.wazeLabel' | translate }}</span>
+      </a>
+
+      <a
+        class="directions-action directions-action--google"
+        [href]="googleMapsUrl"
+        target="_blank"
+        rel="noreferrer"
+        [attr.aria-label]="'envelop.directions.googleMapsAriaLabel' | translate"
+      >
+        <img class="directions-action__icon" src="assets/google-icon.svg" alt="" />
+        <span class="directions-action__label">{{ 'envelop.directions.googleMapsLabel' | translate }}</span>
+      </a>
+    </div>
+
+    <div class="directions-address" appRevealOnScroll revealFrom="left" [revealDelay]="400">
+      <p class="directions-address__title">{{ 'envelop.directions.addressTitle' | translate }}</p>
+      <p class="directions-address__value">{{ 'envelop.directions.destinationLabel' | translate }}</p>
+    </div>
+  </div>
+</div>

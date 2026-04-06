@@ -1,7 +1,8 @@
 {
   "loadingScreen": {
     "tapToOpen": "Tap to open",
-    "openEnvelope": "Open envelope"
+    "openEnvelope": "Open envelope",
+    "recipientPrefix": "To"
   },
   "envelop": {
     "languageToggle": "Language switch",
@@ -20,6 +21,37 @@
       "hours": "Hours",
       "minutes": "Minutes",
       "seconds": "Seconds"
+    },
+    "directions": {
+      "eyebrow": "We can't wait to celebrate with you",
+      "title": "How to get there",
+      "subtitle": "Everything you need for an easy, smooth arrival is right here.",
+      "mapTitle": "Driving directions map",
+      "navigationLabel": "Quick navigation",
+      "wazeLabel": "Waze",
+      "googleMapsLabel": "Google Maps",
+      "wazeAriaLabel": "Navigate with Waze",
+      "googleMapsAriaLabel": "Navigate with Google Maps",
+      "addressTitle": "Event address",
+      "destinationLabel": "Doria, Route 35, Sde Yoav, 7935100",
+      "destinationQuery": "Doria, Route 35, Sde Yoav, 7935100"
+    },
+    "rsvp": {
+      "eyebrow": "We'd love to hear from you",
+      "title": "RSVP",
+      "attendanceLabel": "Will you be joining us?",
+      "guestsLabel": "How many will be coming?",
+      "noteLabel": "A note for the couple",
+      "submit": "Submit RSVP",
+      "attendanceOptions": {
+        "approved": "Coming",
+        "rejected": "Not coming",
+        "maybe": "Maybe"
+      }
     }
+  },
+  "thankYou": {
+    "eyebrow": "We got your reply",
+    "title": "Thanks for your submission"
   }
 }
