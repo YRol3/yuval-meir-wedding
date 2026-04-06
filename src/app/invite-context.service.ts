@@ -55,7 +55,7 @@ export class InviteContextService {
       this.safeDecodeURIComponent(encodedInvite),
       encodedInvite.replace(/ /g, '+'),
       this.safeDecodeURIComponent(encodedInvite).replace(/ /g, '+')
-    ];
+    ].map((candidate) => this.normalizeEncodedInvite(candidate));
 
     for (const candidate of [...new Set(candidates)]) {
       try {
@@ -77,6 +77,14 @@ export class InviteContextService {
 
     console.error('Failed to decode invite payload:', encodedInvite);
     return null;
+  }
+
+  private normalizeEncodedInvite(value: string): string {
+    return value
+      .trim()
+      .replace(/^['"]+|['"]+$/g, '')
+      .replace(/%22$/i, '')
+      .replace(/^%22/i, '');
   }
 
   private safeDecodeURIComponent(value: string): string {
